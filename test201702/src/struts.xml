@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+     <constant name="struts.devMode" value="true"></constant>
+     <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	<package name="liSir" namespace="/" extends="struts-default">
+<!-- 		<action name="login"> -->
+<!-- 			<result name="success">/succ.jsp</result> -->
+<!-- 			<result name="fail">/fail.jsp</result> -->
+<!-- 		</action> -->
+		
+		<!-- <action name="login" class="edu.ujs.actions.Action1">
+			<result name="success">/succ.jsp</result>
+			<result name="fail">/fail.jsp</result>
+		</action> -->
+		
+		<!-- <action name="login" class="edu.ujs.actions.Action3" method="func2">
+			<result name="success">/succ.jsp</result>
+			<result name="fail">/fail.jsp</result>
+		</action> -->
+
+       <!--  <action name="login" class="edu.ujs.actions.Action3">
+			<result name="success">/succ.jsp</result>
+			<result name="fail">/fail.jsp</result>
+		</action> -->
+		<interceptors>
+		 <interceptor name="mi" class="edu.ujs.interceptor.ValidateInterceptor"></interceptor>
+		 <interceptor-stack name="mystack">
+		  <interceptor-ref name="mi"></interceptor-ref>
+		  <interceptor-ref name="defaultStack"></interceptor-ref>
+		  
+		 </interceptor-stack>
+		</interceptors>
+		
+		<action name="login*" class="edu.ujs.actions.Action8" method="{1}">
+			<result name="success">/succ.jsp</result>
+			<result name="fail">/fail.jsp</result>
+		</action>
+		<action name="user" class="edu.ujs.actions.UserAction" >
+			<result name="success">/mainfun.jsp</result>
+			<result name="login">/index.jsp</result>
+<!-- 			<interceptor-ref name="mystack"></interceptor-ref> -->
+		</action>
+	</package>
+
+</struts>    
